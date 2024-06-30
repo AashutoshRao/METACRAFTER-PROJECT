@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleContract {
+    uint256 public value;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+        value = 0;
+    }
+
+    function setValue(uint256 newValue) public {
+        require(msg.sender == owner, "Only the owner can set the value");
+        value = newValue;
+    }
+
+    function incrementValue() public {
+        value += 1;
+    }
+
+    function getValue() public view returns (uint256) {
+        return value;
+    }
+}
